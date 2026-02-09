@@ -56,6 +56,7 @@ export const USER_FORM_SCHEMA = [
 /**
  * Get API base URL - uses proxy in dev, env var in production
  */
-export const getApiBaseUrl = () => {
-  return import.meta.env.VITE_API_URL || '/api';
+export function getApiBaseUrl() {
+  return import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+
 };
