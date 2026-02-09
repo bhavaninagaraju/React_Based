@@ -1,6 +1,6 @@
 import { getApiBaseUrl } from '../config/userFormSchema.js';
 
-const API_BASE = getApiBaseUrl();
+const API_BASE = "http://localhost:5000";
 
 /**
  * Fetch all users
