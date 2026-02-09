@@ -27,6 +27,15 @@
       "dateOfBirth": "2001-05-26",
       "email": "testing@aivoa.net",
       "id": 5
+    },{
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Doe",
+      "phoneNumber": "+1234567890",
+      "dateOfBirth": "1990-08-20",
+      "email": "john.doe@example.com"
     }
+    
+    
   ]
 }
