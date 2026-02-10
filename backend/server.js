@@ -4,15 +4,17 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 const app = express();
-app.use(cors());
-dotenv.config();
+app.use(cors());          // Allow requests from other origins
+dotenv.config();          // Load .env variables
 
+app.use(express.json());   // Parse JSON request bodies
 
-app.use(express.json());
-
+// Test route
 app.get("/", (req, res) => {
   res.send("JSON Server is running!");
 });
+
+// Sample users endpoint
 app.get("/users", (req, res) => {
     res.json([
       { id: 1, name: "Alice" },
@@ -22,6 +24,7 @@ app.get("/users", (req, res) => {
 
 const DEFAULT_PORT = process.env.PORT || 5000;
 
+// Dynamically pick a port if 5000 is busy
 async function startServer() {
   const port = await getPort({ port: DEFAULT_PORT });
   app.listen(port, () => {

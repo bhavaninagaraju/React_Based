@@ -1,6 +1,22 @@
-import { getApiBaseUrl } from '../config/userFormSchema.js';
 
-const API_BASE = "http://localhost:5000";
+
+
+const isGithubPages = window.location.hostname.includes("github.io");
+
+const API_BASE =
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.MODE === "development"
+    ? "http://localhost:5000"
+    : isGithubPages
+      ? "https://your-api.onrender.com"
+      : "");
+
+console.log("MODE =", import.meta.env.MODE);
+console.log("API BASE =", API_BASE);
+
+if (!API_BASE) {
+  console.error("API not available");
+}
 
 /**
  * Fetch all users

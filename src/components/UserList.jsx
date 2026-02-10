@@ -30,7 +30,9 @@ export default function UserList({ users, loading, error, onAdd, onEdit, onDelet
   if (error) {
     return (
       <Alert severity="error" sx={{ mb: 2 }}>
-        {error}. Make sure the API server is running (npm run server).
+        {error}
+        <br />
+        <strong>API may be unavailable.</strong> Please try again later.
       </Alert>
     );
   }
