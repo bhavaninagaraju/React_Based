@@ -1,5 +1,5 @@
 import express from "express";
-import getPort from "get-port";
+
 import dotenv from "dotenv";
 import cors from "cors";
 
@@ -29,13 +29,11 @@ app.get("/users", (req, res) => {
     ]);
 });
 
-const DEFAULT_PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 
-async function startServer() {
-  const port = await getPort({ port: DEFAULT_PORT });
-  app.listen(port, () => {
-    console.log(`JSON Server running on port ${port}`);
-  });
-}
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 
 startServer();
