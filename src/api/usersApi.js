@@ -1,30 +1,29 @@
 
 
 
-const isGithubPages = window.location.hostname.includes("github.io");
-
 const API_BASE =
-  import.meta.env.VITE_API_BASE_URL ||
-  (import.meta.env.MODE === "development"
+  import.meta.env.MODE === "development"
     ? "http://localhost:5000"
-    : isGithubPages
-      ? "https://your-api.onrender.com"
-      : "");
+    : "https://react-based.onrender.com";
+    console.log("MODE =", import.meta.env.MODE);
 
-console.log("MODE =", import.meta.env.MODE);
 console.log("API BASE =", API_BASE);
-
 if (!API_BASE) {
-  console.error("API not available");
+  console.error("API_BASE is not defined. Check .env file");
 }
 
 /**
  * Fetch all users
  */
 export async function fetchUsers() {
-  const res = await fetch(`${API_BASE}/users`);
-  if (!res.ok) throw new Error('Failed to fetch users');
-  return res.json();
+  try {
+    const res = await fetch(`${API_BASE}/users`);
+    if (!res.ok) throw new Error('Failed to fetch users');
+    return res.json();
+  } catch (err) {
+    console.error("Fetch users error:", err);
+    return []; // prevent breaking the UI
+  }
 }
 
 /**
